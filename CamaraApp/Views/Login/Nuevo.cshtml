@@ -1,0 +1,44 @@
+﻿@model Usuario
+@{
+    /**/
+
+    ViewBag.Title = "Nuevo";
+}
+
+<h2>Nuevo Usuario</h2>
+<hr />
+
+
+@using (Html.BeginForm("Nuevo", "Login", FormMethod.Post))
+{
+    <h4 class="text-danger">@Html.DisplayFor(x => x.ErrorMessage)</h4>
+
+    <div class="form-group">
+        <label>Nombre</label><br />
+        @Html.ValidationMessageFor(x => x.Nombre)
+        @Html.TextBoxFor(x => x.Nombre, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Apellido</label><br />
+        @Html.ValidationMessageFor(x => x.Apellido)
+        @Html.TextBoxFor(x => x.Apellido, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Correo Electrónico</label><br />
+        @Html.ValidationMessageFor(x => x.Correo)
+        @Html.TextBoxFor(x => x.Correo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Contraseña</label><br />
+        @Html.ValidationMessageFor(x => x.Contraseña)
+        @Html.PasswordFor(x => x.Contraseña, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-5 d-flex">
+        <input type="submit" class="btn btn-primary mr-2" value="Registrar" />
+        <a href="@Url.Action("Index", "Login")" class="btn btn-outline-info">Inicia Sesión</a>
+    </div>
+}
+
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

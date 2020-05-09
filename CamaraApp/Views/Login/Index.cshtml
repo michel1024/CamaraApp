@@ -1,0 +1,38 @@
+﻿@model Usuario
+@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .field-validation-error{
+        color: red;
+    }
+</style>
+
+<h2>Iniciar Sesión</h2>
+<hr />
+
+@using (Html.BeginForm("Validate", "Login", FormMethod.Post))
+{
+    <h4 class="text-danger">@Html.DisplayFor(x => x.ErrorMessage)</h4>
+
+    <div class="form-group">
+        <label>Correo Electrónico</label><br />
+        @Html.ValidationMessageFor(x => x.Correo)
+        @Html.TextBoxFor(x => x.Correo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label>Contraseña</label><br />
+        @Html.ValidationMessageFor(x => x.Contraseña)
+        @Html.PasswordFor(x => x.Contraseña, new { @class = "form-control" })
+    </div>
+    <div class="form-group col-3 d-flex">
+        <input type="submit" class="btn btn-primary mr-2" value="Entrar" />
+        <a href="@Url.Action("Nuevo", "Login")" class="btn btn-outline-info">Regístrate</a>
+    </div>
+}
+
+    <script src="~/Scripts/jquery-3.0.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+

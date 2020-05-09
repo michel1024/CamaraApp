@@ -1,0 +1,40 @@
+﻿@model List<Camara>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Cámaras <a href="@Url.Action("Nuevo", "Camara")" class="btn btn-success">Nuevo</a></h2>
+<br />
+@using (Html.BeginForm("SendEmail", "Camara"))
+{
+    <input type="text" name="nombre" placeholder="Nombre" /><br />
+    <input type="text" name="correo" placeholder="Correo" /><br />
+    <input type="text" name="asunto" placeholder="Asunto" /><br />
+    <input type="text" name="mensaje" placeholder="Mensaje" /><br />
+    <input type="submit" value="Enviar" class="btn btn-primary" />
+}
+<hr />
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <img src="@Url.Content(item.Imagen)" class="img-fluid" alt="Alternate Text" />
+                    </div>
+                    <div class="card-body">
+                        <h3>@item.Fabricante</h3>
+                        <p>@item.Serial - @item.Descripcion</p>
+                        <div class="d-flex justify-content-around">
+                            <a href="@Url.Action("Detalle", "Camara", new { id = item.CamaraId })" class="btn btn-primary">Ver Detalle</a>
+                            <a href="@Url.Action("Eliminar", "Camara", new { id = item.CamaraId })" class="btn btn-outline-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

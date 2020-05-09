@@ -1,0 +1,23 @@
+﻿@model Camara
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Detalle</h2>
+<hr />
+
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <img src="@Url.Content(Model.Imagen)" class="img-fluid" alt="Alternate Text" />
+        </div>
+        <div class="col-md-6">
+            <h4>@Model.Fabricante</h4>
+            <p class="text-center"><b>Descripción:</b></p>
+            <p>@Model.Serial - @Model.Descripcion</p>
+        </div>
+    </div>
+    <a href="@Url.Action("Index", "Camara")" class="btn btn-primary">Regresar</a>
+    <a href="@Url.Action("Actualizar", "Camara", new { id = Model.CamaraId })" class="btn btn-warning">Actualizar</a>
+</div>
+
